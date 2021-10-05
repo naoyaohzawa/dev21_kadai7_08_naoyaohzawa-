@@ -6,17 +6,29 @@
 
 <!-- ファイル紹介 -->
 index.php   //ログイン画面(メインページです)
+
 login_act   //ログイン時のdb connect用のphpです。管理者か一般userか識別します
+
 register.php  //新規登録画面（index.phpの新規登録ボタンから飛びます）
+
 register_act.php    //新規登録時、db connect用のphpです
+
 select.php  //一般user向けの船の運行情報画面です
+
 select_admin.php  //管理者用の船の運行情報画面です（データの編集と削除ができます）
+
 input.php   //新しい運行情報を登録します
+
 input_act.php   //input.phpのdb connect用のphpです
+
 update_act.php  //select_admin.phpで管理者がupdateする時のdb connect用のphpです
+
 delete_act.php  //select_admin.phpで管理者がdeleteする時のdb connect用のphpです
+
 logout.php  //ログアウト用のphpです
+
 funcs.php   //function諸々が格納してあります
+
 
 <!-- sqlファイル(table）の説明 -->
 gs_user_table   //user情報です。
