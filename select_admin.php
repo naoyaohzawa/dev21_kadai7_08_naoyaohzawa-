@@ -9,13 +9,14 @@ require_once("funcs.php");
 session_start();    
 // ログインしているかsession_idをチェックする関数実行(funcs.php参照)
 loginCheck();
-// adminCheck();
+adminCheck();
 
-echo $_SESSION["kanri_flag"];
-if($_SESSION["kanri_flag"] !== 1){
-    logout();
-    header("location:index.php");
-}
+// echo $_SESSION["kanri_flag"];
+// if($_SESSION["kanri_flag"] != 1){
+//     logout();
+//     header("location:index.php");
+//     exit();
+// }
 
 // 1. データベース接続
 $pdo = db_connect();
