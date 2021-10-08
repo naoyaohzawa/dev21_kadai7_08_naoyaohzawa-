@@ -5,10 +5,8 @@ require_once("funcs.php");
 // ページ紹介
 // register.phpから遷移します。新規登録者情報をdbにconnectするページです。
 
-loginCheck();
 
-// session_start();
-session_start();
+
 
 $name = $_POST["name"];
 $lid = $_POST["lid"];
@@ -62,9 +60,9 @@ if(count($error) === 0){
 
     $pdo = db_connect();
 
-    $stmt = $pdo->prepare("INSERT INTO `gs_user_table`(`id`, `name`, `lid`, `email`, `lpw`, `kanri_flag`, 
-    `life_flag`, `register_date`, `unsub_date`, `plan_flag`) 
-    VALUES (NULL,name=:name,lid=:lid,email=:email,lpw=:lpw,kanri_flag=0,life_flag=0,sysdate(),null,plan_flag=1)");
+    $stmt = $pdo->prepare("INSERT INTO gs_user_table (id, name, lid, email, lpw, kanri_flag, 
+    life_flag, register_date, unsub_date, plan_flag) 
+    VALUES (NULL,:name,:lid,:email,:lpw,0,0,sysdate(),null,1)");
     $stmt->bindValue(':name', $name, PDO::PARAM_STR);  //Integer（数値の場合 PDO::PARAM_INT)
     $stmt->bindValue(':lid', $lid, PDO::PARAM_STR);  //Integer（数値の場合 PDO::PARAM_INT)
     $stmt->bindValue(':email', $email, PDO::PARAM_STR);  //Integer（数値の場合 PDO::PARAM_INT)
@@ -72,6 +70,7 @@ if(count($error) === 0){
     $status = $stmt->execute();  
 
     //   echo $status;
+    // INSERT INTO gs_user_table (id, name, lid, email, lpw, kanri_flag, life_flag, register_date, unsub_date, plan_flag) VALUES (NULL,'ohzawa', 'ohzawa','ohzawa','ohzawa',0,0,sysdate(),null,1);
     
     //３．データ表示
     
@@ -84,7 +83,11 @@ if(count($error) === 0){
     
 
 }else{
-    echo $error;
+    
+    echo "入力していない項目があります";
+
+    echo "<input  type='button' value='修正する' onclick='history.back(-1)'>";
+
 }
 
 ?>
