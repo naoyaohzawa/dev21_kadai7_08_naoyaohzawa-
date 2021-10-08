@@ -64,9 +64,9 @@ function logout(){
 
 // 管理者チェック
 function adminCheck(){
-    session_start();
+    // session_start();
 
-    if($_SESSION["kanri_flag"] !== 1){
+    if($_SESSION["kanri_flag"] != 1){
         logout();
         header("location:index.php");
     }
