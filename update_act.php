@@ -7,6 +7,8 @@
 
 require_once("funcs.php");
 
+session_start();
+
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     
@@ -70,7 +72,7 @@ if(count($error) === 0){
         exit("ErrorMessage:".$error[2]);
     }
 
-    if($_SESSION["kanri_flag"] === 1){
+    if($_SESSION["kanri_flag"] == 1){
         header("location:select_admin.php");
     }else{
         header("location:select.php");
